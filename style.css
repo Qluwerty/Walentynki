@@ -1,12 +1,13 @@
 body {
     margin: 0;
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     background-image: url("heart-bg.jpg");
     font-family: "Pixelify Sans", sans-serif;
     overflow: hidden;
+    height: 100%;
+    padding: 0;
 }
 
 /* Envelope Screen */
@@ -138,6 +139,7 @@ display: inline-block;
     background-color: rgba(255,240,240,0.5);
     border-radius: 12px;
 }
+
 
 
 
