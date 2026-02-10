@@ -33,25 +33,7 @@ noBtn.addEventListener("mouseover", () => {
     noBtn.style.transition = "transform 0.3s ease";
     noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
 });
-function isMobile() {
-  return /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
-}
 
-// Logika przycisków
-if (isMobile()) {
-    // =====================
-    // TO SIĘ WYKONUJE TYLKO NA TELEFONIE
-    // =====================
-    console.log("📱 Telefon - robimy przycisk ucieczki / zoom");
-    noBtn.addEventListener("touchstart", moveNoButton); // np. przycisk NO ucieka
-    yesBtn.addEventListener("click", () => {
-        yesScale += 0.5;
-        yesBtn.style.transform = `translate(-50%, -50%) scale(${yesScale})`;
-    });
-
-
-
-// YES is clicked
 
 yesBtn.addEventListener("click", () => {
     title.textContent = "oj gingerku ty mój love";
@@ -65,6 +47,7 @@ yesBtn.addEventListener("click", () => {
     finalText.style.display = "block";
 
 });
+
 
 
 
