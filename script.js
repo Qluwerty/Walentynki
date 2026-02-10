@@ -32,7 +32,7 @@ noBtn.addEventListener("mouseover", () => {
     const moveX = Math.cos(angle) * distance;
     const moveY = Math.sin(angle) * distance;
 
-    noBtn.style.transition = "transform 0.3s ease";
+    noBtn.style.transition = "transform 0.5s ease";
     noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
 });
 
@@ -70,3 +70,4 @@ yesBtn.addEventListener("click", () => {
 
     finalText.style.display = "block";
 });
+
