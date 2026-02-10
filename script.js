@@ -20,6 +20,19 @@ envelope.addEventListener("click", () => {
     },50);
 });
 
+noBtn.addEventListener("mouseover", () => {
+    const min = 200;
+    const max = 200;
+
+    const distance = Math.random() * (max - min) + min;
+    const angle = Math.random() * Math.PI * 2;
+
+    const moveX = Math.cos(angle) * distance;
+    const moveY = Math.sin(angle) * distance;
+
+    noBtn.style.transition = "transform 0.3s ease";
+    noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+});
 function isMobile() {
   return /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
 }
@@ -35,25 +48,6 @@ if (isMobile()) {
         yesScale += 0.5;
         yesBtn.style.transform = `translate(-50%, -50%) scale(${yesScale})`;
     });
-} else {
-    // =====================
-    // TO SIĘ WYKONUJE TYLKO NA KOMPUTERZE
-    // =====================
-    console.log("💻 Komputer - przycisk statyczny");
-    noBtn.addEventListener("mouseover", () => {
-    const min = 200;
-    const max = 200;
-
-    const distance = Math.random() * (max - min) + min;
-    const angle = Math.random() * Math.PI * 2;
-
-    const moveX = Math.cos(angle) * distance;
-    const moveY = Math.sin(angle) * distance;
-
-    noBtn.style.transition = "transform 0.3s ease";
-    noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
-});
-}
 
 
 
@@ -71,6 +65,7 @@ yesBtn.addEventListener("click", () => {
     finalText.style.display = "block";
 
 });
+
 
 
 
