@@ -123,7 +123,7 @@ display: inline-block;
 
 .no-btn {
     z-index: 1;
-    position: relative;
+    position: fixed;
     transition: transform 0.15s ease;
     cursor: default;
 }
@@ -138,3 +138,4 @@ display: inline-block;
     border-radius: 12px;
 
 }
+
