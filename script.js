@@ -10,7 +10,12 @@ const buttons = document.getElementById("letter-buttons");
 const finalText = document.getElementById("final-text");
 
 // Click Envelope
-
+function disableScroll() {
+    // blokuje przewijanie gestami touch
+    document.body.addEventListener("touchmove", function(e) {
+        e.preventDefault();
+    }, { passive: false });
+}
 envelope.addEventListener("click", () => {
     envelope.style.display = "none";
     letter.style.display = "flex";
@@ -22,7 +27,7 @@ envelope.addEventListener("click", () => {
 
 // Logic to move the NO btn
 
-noBtn.addEventListener("mouseover", () => {
+noBtn.addEventListener("mouseover", "touchstart", "clicked" () => {
     const min = 200;
     const max = 200;
 
@@ -70,3 +75,4 @@ yesBtn.addEventListener("click", () => {
 
     finalText.style.display = "block";
 });
+
