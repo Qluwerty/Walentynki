@@ -21,38 +21,13 @@ envelope.addEventListener("click", () => {
 });
 
 // Logic to move the NO btn
-
 noBtn.addEventListener("mouseover", () => {
-    const min = 200;
-    const max = 200;
-
-    const distance = Math.random() * (max - min) + min;
-    const angle = Math.random() * Math.PI * 2;
-
-    const moveX = Math.cos(angle) * distance;
-    const moveY = Math.sin(angle) * distance;
-
-    noBtn.style.transition = "transform 0.5s ease";
-    noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
-});
-
-function isMobile() {
-  return /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
-}
-
-// Logika przycisków
-if (isMobile()) {
-    // =====================
-    // TO SIĘ WYKONUJE TYLKO NA TELEFONIE
-    // =====================
-    console.log("📱 Telefon - robimy przycisk ucieczki / zoom");
-    noBtn.addEventListener("touchstart", () => {
+        // np. lekki efekt, ale nie ucieka poza ekran
         noBtn.style.transform = "translate(-50%, -50%) scale(1.1)";
         setTimeout(() => {
             noBtn.style.transform = "translate(-50%, -50%) scale(1)";
         }, 300);
-});
-
+    });
 // Logic to make YES btn to grow
 
 // let yesScale = 1;
@@ -87,5 +62,6 @@ yesBtn.addEventListener("click", () => {
 
     finalText.style.display = "block";
 });
+
 
 
