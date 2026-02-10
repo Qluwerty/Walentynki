@@ -20,76 +20,61 @@ envelope.addEventListener("click", () => {
     },50);
 });
 
-// Logic to move the NO btn
 
 function isPortrait() {
     return window.innerHeight > window.innerWidth;
 }
 
-function moveNoButton() {
-    // ❗ działa TYLKO w pionie
-    if (!isPortrait()) return;
+// Główna logika
+function handleOrientation() {
+    if (isPortrait()) {
+        //Logic to make YES btn to grow
 
-    const rect = noBtn.getBoundingClientRect();
-    const padding = 12;
+let yesScale = 1;
 
-    const viewportWidth = window.visualViewport
-        ? window.visualViewport.width
-        : window.innerWidth;
+ yesBtn.style.position = "relative"
+ yesBtn.style.transformOrigin = "center center";
+ yesBtn.style.transition = "transform 0.3s ease";
 
-    const viewportHeight = window.visualViewport
-        ? window.visualViewport.height
-        : window.innerHeight;
+ noBtn.addEventListener("click", () => {
+     yesScale += 2;
 
-    const maxX = viewportWidth - rect.width - padding;
-    const maxY = viewportHeight - rect.height - padding;
+     if (yesBtn.style.position !== "fixed") {
+         yesBtn.style.position = "fixed";
+         yesBtn.style.top = "50%";
+         yesBtn.style.left = "50%";
+         yesBtn.style.transform = `translate(-50%, -50%) scale(${yesScale})`;
+     }else{
+         yesBtn.style.transform = `translate(-50%, -50%) scale(${yesScale})`;
+     }
+ });
+        console.log("📱 Telefon w pionie - uruchamiam przycisk ucieczki");
+        moveNoButton(); // np. Twój przycisk NO
+    } else {
+        noBtn.addEventListener("mouseover", () => {
+    const min = 200;
+    const max = 200;
 
-    const x = Math.random() * Math.max(0, maxX);
-    const y = Math.random() * Math.max(0, maxY);
+    const distance = Math.random() * (max - min) + min;
+    const angle = Math.random() * Math.PI * 2;
 
-    noBtn.style.transition = "left 0.25s ease, top 0.25s ease";
-    noBtn.style.left = `${x}px`;
-    noBtn.style.top = `${y}px`;
-}
+    const moveX = Math.cos(angle) * distance;
+    const moveY = Math.sin(angle) * distance;
 
-// desktop
-noBtn.addEventListener("mouseover", moveNoButton);
-
-// mobile
-noBtn.addEventListener("touchstart", moveNoButton);
-
-// reset po obrocie telefonu
-window.addEventListener("orientationchange", () => {
-    noBtn.style.left = "";
-    noBtn.style.top = "";
+    noBtn.style.transition = "transform 0.3s ease";
+    noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
 });
+        console.log("📱 Telefon w poziomie - przycisk grzeczny");
+        resetNoButton(); // np. resetuje pozycję lub nic nie robi
+    }
+}
+            
 
-                       
-// Logic to make YES btn to grow
-
-// let yesScale = 1;
-
-// yesBtn.style.position = "relative"
-// yesBtn.style.transformOrigin = "center center";
-// yesBtn.style.transition = "transform 0.3s ease";
-
-// noBtn.addEventListener("click", () => {
-//     yesScale += 2;
-
-//     if (yesBtn.style.position !== "fixed") {
-//         yesBtn.style.position = "fixed";
-//         yesBtn.style.top = "50%";
-//         yesBtn.style.left = "50%";
-//         yesBtn.style.transform = `translate(-50%, -50%) scale(${yesScale})`;
-//     }else{
-//         yesBtn.style.transform = `translate(-50%, -50%) scale(${yesScale})`;
-//     }
-// });
 
 // YES is clicked
 
 yesBtn.addEventListener("click", () => {
-    title.textContent = "Yippeeee!";
+    title.textContent = "oj gingerku ty mój love";
 
     catImg.src = "cat_dance.gif";
 
@@ -100,6 +85,7 @@ yesBtn.addEventListener("click", () => {
     finalText.style.display = "block";
 
 });
+
 
 
 
