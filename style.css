@@ -123,10 +123,9 @@ display: inline-block;
 
 .no-btn {
     z-index: 1;
-    position: fixed;
+    position: relative;
     transition: transform 0.15s ease;
     cursor: default;
-    max-width: 90vw;
 }
 
 .final-text{
@@ -139,5 +138,6 @@ display: inline-block;
     border-radius: 12px;
 
 }
+
 
 
