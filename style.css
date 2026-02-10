@@ -6,6 +6,7 @@ body {
     align-items: center;
     background-image: url("heart-bg.jpg");
     font-family: "Pixelify Sans", sans-serif;
+    overflow: hidden;
 }
 
 /* Envelope Screen */
@@ -137,6 +138,7 @@ display: inline-block;
     background-color: rgba(255,240,240,0.5);
     border-radius: 12px;
 }
+
 
 
 
