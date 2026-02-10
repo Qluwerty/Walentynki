@@ -138,12 +138,7 @@ display: inline-block;
     border-radius: 12px;
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;      /* blokuje scroll na telefonie */
-}
+
 
 
 
