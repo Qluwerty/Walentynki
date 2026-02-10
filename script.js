@@ -20,73 +20,40 @@ envelope.addEventListener("click", () => {
     },50);
 });
 
-// Funkcja sprawdzająca orientację
-function isPortrait() {
-    return window.innerHeight > window.innerWidth;
+function isMobile() {
+  return /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
 }
 
-// przycisk YES
-let yesScale = 1;
-yesBtn.style.position = "fixed";
-yesBtn.style.top = "50%";
-yesBtn.style.left = "50%";
-yesBtn.style.transformOrigin = "center center";
-yesBtn.style.transition = "transform 0.3s ease";
-yesBtn.style.transform = `translate(-50%, -50%) scale(${yesScale})`;
+// Logika przycisków
+if (isMobile()) {
+    // =====================
+    // TO SIĘ WYKONUJE TYLKO NA TELEFONIE
+    // =====================
+    console.log("📱 Telefon - robimy przycisk ucieczki / zoom");
+    noBtn.addEventListener("touchstart", moveNoButton); // np. przycisk NO ucieka
+    yesBtn.addEventListener("click", () => {
+        yesScale += 0.5;
+        yesBtn.style.transform = `translate(-50%, -50%) scale(${yesScale})`;
+    });
+} else {
+    // =====================
+    // TO SIĘ WYKONUJE TYLKO NA KOMPUTERZE
+    // =====================
+    console.log("💻 Komputer - przycisk statyczny");
+    noBtn.addEventListener("mouseover", () => {
+    const min = 200;
+    const max = 200;
 
-// przycisk NO
-noBtn.style.position = "fixed";
-noBtn.style.transition = "left 0.25s ease, top 0.25s ease";
+    const distance = Math.random() * (max - min) + min;
+    const angle = Math.random() * Math.PI * 2;
 
-// Funkcja ruchu NO btn (portrait)
-function moveNoButton() {
-    const rect = noBtn.getBoundingClientRect();
-    const padding = 12;
+    const moveX = Math.cos(angle) * distance;
+    const moveY = Math.sin(angle) * distance;
 
-    const maxX = window.innerWidth - rect.width - padding;
-    const maxY = window.innerHeight - rect.height - padding;
-
-    const x = Math.random() * Math.max(0, maxX);
-    const y = Math.random() * Math.max(0, maxY);
-
-    noBtn.style.left = `${x}px`;
-    noBtn.style.top = `${y}px`;
+    noBtn.style.transition = "transform 0.3s ease";
+    noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+});
 }
-
-// Reset pozycji NO (landscape)
-function resetNoButton() {
-    noBtn.style.left = "";
-    noBtn.style.top = "";
-}
-
-// Event YES btn
-yesBtn.addEventListener("click", () => {
-    if (!isPortrait()) return; // działa tylko w portrait
-    yesScale += 2;
-    yesBtn.style.transform = `translate(-50%, -50%) scale(${yesScale})`;
-});
-
-// Event NO btn
-noBtn.addEventListener("mouseover", () => {
-    if (!isPortrait()) {
-        // Landscape: nie ucieka poza ekran, można zrobić lekki ruch
-        resetNoButton();
-    } else {
-        // Portrait: ucieka losowo
-        moveNoButton();
-    }
-});
-noBtn.addEventListener("touchstart", () => {
-    if (isPortrait()) moveNoButton();
-});
-
-// Obsługa zmiany orientacji
-window.addEventListener("resize", () => {
-    if (!isPortrait()) resetNoButton();
-});
-window.addEventListener("orientationchange", () => {
-    if (!isPortrait()) resetNoButton();
-});
 
 
 
@@ -104,6 +71,7 @@ yesBtn.addEventListener("click", () => {
     finalText.style.display = "block";
 
 });
+
 
 
 
