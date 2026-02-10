@@ -22,19 +22,15 @@ envelope.addEventListener("click", () => {
 
 // Logic to move the NO btn
 
-noBtn.addEventListener("mouseover", () => {
-    const min = 200;
-    const max = 200;
+const maxX = window.innerWidth - button.offsetWidth;
+const maxY = window.innerHeight - button.offsetHeight;
 
-    const distance = Math.random() * (max - min) + min;
-    const angle = Math.random() * Math.PI * 2;
+const x = Math.random() * maxX;
+const y = Math.random() * maxY;
 
-    const moveX = Math.cos(angle) * distance;
-    const moveY = Math.sin(angle) * distance;
+button.style.left = x + "px";
+button.style.top = y + "px";
 
-    noBtn.style.transition = "transform 0.3s ease";
-    noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
-});
 
 // Logic to make YES btn to grow
 
@@ -69,4 +65,5 @@ yesBtn.addEventListener("click", () => {
     buttons.style.display = "none";
 
     finalText.style.display = "block";
+
 });
