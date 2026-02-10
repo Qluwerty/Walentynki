@@ -6,7 +6,6 @@ body {
     align-items: center;
     background-image: url("heart-bg.jpg");
     font-family: "Pixelify Sans", sans-serif;
-    position: fixed; 
     overflow: hidden; 
     touch-action: none;
     background-size: cover;
@@ -145,6 +144,7 @@ display: inline-block;
     background-color: rgba(255,240,240,0.5);
     border-radius: 12px;
 }
+
 
 
 
