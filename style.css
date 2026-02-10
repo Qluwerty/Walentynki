@@ -154,23 +154,3 @@ html, body {
   border: 2px solid #333;
   border-radius: 10px;
 }
-
-#yesBtn, #noBtn {
-  position: absolute;     /* przycisk NO będzie się przesuwał */
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-#yesBtn {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-#noBtn {
-  top: 70%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
