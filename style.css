@@ -8,6 +8,7 @@ body {
     font-family: "Pixelify Sans", sans-serif;
     overflow: hidden; 
     touch-action: none;
+    background-size: cover;
 }
 
 /* Envelope Screen */
@@ -139,4 +140,5 @@ display: inline-block;
     background-color: rgba(255,240,240,0.5);
     border-radius: 12px;
 }
+
 
