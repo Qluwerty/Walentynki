@@ -138,17 +138,3 @@ display: inline-block;
     border-radius: 12px;
 
 }
-.container {
-  display: flex;
-  flex-direction: column; /* na telefon */
-  gap: 1rem;
-}
-@media (max-width: 768px) {
-  body {
-    font-size: 16px;
-  }
-
-  .menu {
-    flex-direction: column;
-  }
-}
