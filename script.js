@@ -22,23 +22,47 @@ envelope.addEventListener("click", () => {
 
 // Logic to move the NO btn
 
+function isPortrait() {
+    return window.innerHeight > window.innerWidth;
+}
+
 function moveNoButton() {
-    const btnRect = noBtn.getBoundingClientRect();
+    // ❗ działa TYLKO w pionie
+    if (!isPortrait()) return;
 
-    const padding = 10; // margines od krawędzi
-    const maxX = window.innerWidth - btnRect.width - padding;
-    const maxY = window.innerHeight - btnRect.height - padding;
+    const rect = noBtn.getBoundingClientRect();
+    const padding = 12;
 
-    const x = Math.random() * maxX;
-    const y = Math.random() * maxY;
+    const viewportWidth = window.visualViewport
+        ? window.visualViewport.width
+        : window.innerWidth;
 
-    noBtn.style.transition = "left 0.3s ease, top 0.3s ease";
+    const viewportHeight = window.visualViewport
+        ? window.visualViewport.height
+        : window.innerHeight;
+
+    const maxX = viewportWidth - rect.width - padding;
+    const maxY = viewportHeight - rect.height - padding;
+
+    const x = Math.random() * Math.max(0, maxX);
+    const y = Math.random() * Math.max(0, maxY);
+
+    noBtn.style.transition = "left 0.25s ease, top 0.25s ease";
     noBtn.style.left = `${x}px`;
     noBtn.style.top = `${y}px`;
 }
 
+// desktop
 noBtn.addEventListener("mouseover", moveNoButton);
+
+// mobile
 noBtn.addEventListener("touchstart", moveNoButton);
+
+// reset po obrocie telefonu
+window.addEventListener("orientationchange", () => {
+    noBtn.style.left = "";
+    noBtn.style.top = "";
+});
 
                        
 // Logic to make YES btn to grow
@@ -76,6 +100,7 @@ yesBtn.addEventListener("click", () => {
     finalText.style.display = "block";
 
 });
+
 
 
 
