@@ -22,20 +22,17 @@ envelope.addEventListener("click", () => {
 
 // Logic to move the NO btn
 
-noBtn.addEventListener("mouseover", () => {
-    const min = 200;
-    const max = 200;
+ noBtn.addEventListener("mouseenter", () => {
 
-    const distance = Math.random() * (max - min) + min;
-    const angle = Math.random() * Math.PI * 2;
+      const cardRect = card.getBoundingClientRect();
+      const btnRect = noBtn.getBoundingClientRect();
 
-    const moveX = Math.cos(angle) * distance;
-    const moveY = Math.sin(angle) * distance;
+      const maxX = cardRect.width - btnRect.width - 10;
+      const maxY = cardRect.height - btnRect.height - 10;
 
-    noBtn.style.transition = "transform 0.3s ease";
-    noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      noBtn.style.left = Math.random() * maxX + "px";
+      noBtn.style.top = Math.random() * maxY + "px";
 });
-
 // Logic to make YES btn to grow
 
 // let yesScale = 1;
@@ -70,3 +67,4 @@ yesBtn.addEventListener("click", () => {
 
     finalText.style.display = "block";
 });
+
