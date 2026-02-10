@@ -21,7 +21,7 @@ envelope.addEventListener("click", () => {
 });
 
 // Logic to move the NO btn
-noBtn.addEventListener("mouseover", () => {
+noBtn.addEventListener("mouseover", "touchstart"() => {
         // np. lekki efekt, ale nie ucieka poza ekran
         noBtn.style.transform = "translate(-50%, -50%) scale(1.1)";
         setTimeout(() => {
@@ -62,6 +62,7 @@ yesBtn.addEventListener("click", () => {
 
     finalText.style.display = "block";
 });
+
 
 
 
