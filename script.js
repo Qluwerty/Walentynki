@@ -36,6 +36,23 @@ noBtn.addEventListener("mouseover", () => {
     noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
 });
 
+function isMobile() {
+  return /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+}
+
+// Logika przycisków
+if (isMobile()) {
+    // =====================
+    // TO SIĘ WYKONUJE TYLKO NA TELEFONIE
+    // =====================
+    console.log("📱 Telefon - robimy przycisk ucieczki / zoom");
+    noBtn.addEventListener("touchstart", () => {
+        noBtn.style.transform = "translate(-50%, -50%) scale(1.1)";
+        setTimeout(() => {
+            noBtn.style.transform = "translate(-50%, -50%) scale(1)";
+        }, 300);
+});
+
 // Logic to make YES btn to grow
 
 // let yesScale = 1;
@@ -70,4 +87,5 @@ yesBtn.addEventListener("click", () => {
 
     finalText.style.display = "block";
 });
+
 
