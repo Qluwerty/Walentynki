@@ -152,8 +152,3 @@ display: inline-block;
     flex-direction: column;
   }
 }
-#now {
-  position: fixed;   /* względem ekranu */
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-}
