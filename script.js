@@ -20,55 +20,74 @@ envelope.addEventListener("click", () => {
     },50);
 });
 
-
+// Funkcja sprawdzająca orientację
 function isPortrait() {
     return window.innerHeight > window.innerWidth;
 }
 
-// Główna logika
-function handleOrientation() {
-    if (isPortrait()) {
-        //Logic to make YES btn to grow
-
+// przycisk YES
 let yesScale = 1;
+yesBtn.style.position = "fixed";
+yesBtn.style.top = "50%";
+yesBtn.style.left = "50%";
+yesBtn.style.transformOrigin = "center center";
+yesBtn.style.transition = "transform 0.3s ease";
+yesBtn.style.transform = `translate(-50%, -50%) scale(${yesScale})`;
 
- yesBtn.style.position = "relative"
- yesBtn.style.transformOrigin = "center center";
- yesBtn.style.transition = "transform 0.3s ease";
+// przycisk NO
+noBtn.style.position = "fixed";
+noBtn.style.transition = "left 0.25s ease, top 0.25s ease";
 
- noBtn.addEventListener("click", () => {
-     yesScale += 2;
+// Funkcja ruchu NO btn (portrait)
+function moveNoButton() {
+    const rect = noBtn.getBoundingClientRect();
+    const padding = 12;
 
-     if (yesBtn.style.position !== "fixed") {
-         yesBtn.style.position = "fixed";
-         yesBtn.style.top = "50%";
-         yesBtn.style.left = "50%";
-         yesBtn.style.transform = `translate(-50%, -50%) scale(${yesScale})`;
-     }else{
-         yesBtn.style.transform = `translate(-50%, -50%) scale(${yesScale})`;
-     }
- });
-        console.log("📱 Telefon w pionie - uruchamiam przycisk ucieczki");
-        moveNoButton(); // np. Twój przycisk NO
-    } else {
-        noBtn.addEventListener("mouseover", () => {
-    const min = 200;
-    const max = 200;
+    const maxX = window.innerWidth - rect.width - padding;
+    const maxY = window.innerHeight - rect.height - padding;
 
-    const distance = Math.random() * (max - min) + min;
-    const angle = Math.random() * Math.PI * 2;
+    const x = Math.random() * Math.max(0, maxX);
+    const y = Math.random() * Math.max(0, maxY);
 
-    const moveX = Math.cos(angle) * distance;
-    const moveY = Math.sin(angle) * distance;
-
-    noBtn.style.transition = "transform 0.3s ease";
-    noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
-});
-        console.log("📱 Telefon w poziomie - przycisk grzeczny");
-        resetNoButton(); // np. resetuje pozycję lub nic nie robi
-    }
+    noBtn.style.left = `${x}px`;
+    noBtn.style.top = `${y}px`;
 }
-            
+
+// Reset pozycji NO (landscape)
+function resetNoButton() {
+    noBtn.style.left = "";
+    noBtn.style.top = "";
+}
+
+// Event YES btn
+yesBtn.addEventListener("click", () => {
+    if (!isPortrait()) return; // działa tylko w portrait
+    yesScale += 2;
+    yesBtn.style.transform = `translate(-50%, -50%) scale(${yesScale})`;
+});
+
+// Event NO btn
+noBtn.addEventListener("mouseover", () => {
+    if (!isPortrait()) {
+        // Landscape: nie ucieka poza ekran, można zrobić lekki ruch
+        resetNoButton();
+    } else {
+        // Portrait: ucieka losowo
+        moveNoButton();
+    }
+});
+noBtn.addEventListener("touchstart", () => {
+    if (isPortrait()) moveNoButton();
+});
+
+// Obsługa zmiany orientacji
+window.addEventListener("resize", () => {
+    if (!isPortrait()) resetNoButton();
+});
+window.addEventListener("orientationchange", () => {
+    if (!isPortrait()) resetNoButton();
+});
+
 
 
 // YES is clicked
@@ -85,6 +104,7 @@ yesBtn.addEventListener("click", () => {
     finalText.style.display = "block";
 
 });
+
 
 
 
