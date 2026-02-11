@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="style.css" />
-    <title>Walentyka dla mojej ukochanej Majci</title>
+    <title>Valentine Letter</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,7 +18,7 @@
     <!-- Envelope Screen -->
     <div id="envelope-container">
       <img src="envelope.png" alt="Envelope" id="envelope" />
-      <p>List dla Gingerka</p>
+      <p>♡ Letter for You ♡</p>
     </div>
 
     <!-- Letter Screen -->
@@ -27,78 +27,20 @@
         <h1 id="letter-title">Will you be my Valentine?</h1>
 
         <img src="cat_heart.gif" class="cat" id="letter-cat" />
+
         <div class="buttons" id="letter-buttons">
           <img src="yes.png" class="btn yes-btn" alt="Yes" />
-          
+
           <div class="no-wrapper">
             <img src="no.png" class="btn no-btn" alt="No" />
           </div>
         </div>
-        <div id="card">
-  <button id="yesBtn">YES</button>
-  <button id="noBtn">NO</button>
-</div>
-
-<style>
-#card {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
-
-#noBtn {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  transition: left 0.2s ease, top 0.2s ease;
-}
-</style>
-
-<script>
-const noBtn = document.getElementById("noBtn");
-const card = document.getElementById("card");
-
-function moveNoButton() {
-    const cardRect = card.getBoundingClientRect();
-    const btnRect = noBtn.getBoundingClientRect();
-
-    const padding = 10;
-
-    const maxX = cardRect.width - btnRect.width - padding;
-    const maxY = cardRect.height - btnRect.height - padding;
-
-    const x = Math.random() * maxX;
-    const y = Math.random() * maxY;
-
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
-}
-
-// Desktop - hover
-noBtn.addEventListener("mouseenter", moveNoButton);
-
-// Mobile - touchstart + touchmove, żeby zawsze uciekał
-["touchstart", "touchmove"].forEach(evt => {
-    noBtn.addEventListener(evt, e => {
-        moveNoButton();
-        e.preventDefault(); // ważne, żeby przeglądarka nie “zjadała” zdarzenia
-    }, { passive: false });
-});
-</script>
-
 
         <p id="final-text" class="final-text" style="display: none">
-          <strong>W walentynki:</strong> Meow Restaurant at 7pm. Dress fancy!
+          <strong>Valentine Date:</strong> Meow Restaurant at 7pm. Dress fancy!
         </p>
       </div>
-</div>
     </div>
     <script src="script.js"></script>
   </body>
 </html>
-
-
-
-
